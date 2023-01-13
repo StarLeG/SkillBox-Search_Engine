@@ -2,6 +2,10 @@
 
 #include <vector>
 #include <string>
+#include <fstream>
+#include <iostream>
+
+#include <nlohmann/json.hpp>
 
 /**
 * Класс для работы с JSON-файлами
@@ -9,7 +13,7 @@
 class ConverterJSON
 {
 public:
-	ConverterJSON() = default;
+	ConverterJSON() ;
 
 /**
 * Метод получения содержимого файлов
@@ -23,7 +27,7 @@ public:
 * количества ответов на один запрос
 * @return
 */
-	int GetResponsesLimit();
+	int GetResponsesLimit() const;
 
 /**
 * Метод получения запросов из файла requests.json
@@ -36,4 +40,11 @@ public:
 */
 	void putAnswers(std::vector<std::vector<std::pair<int, float>>>
 	answers);
+
+private:
+
+	nlohmann::json config;
+
+
+	bool readConfigFile();
 };

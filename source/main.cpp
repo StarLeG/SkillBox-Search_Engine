@@ -3,6 +3,8 @@
 
 int main()
 {
-	std::cout << "Hello, World!" << std::endl;
+	ConverterJSON cj;
+
+
 	return 0;
 }
