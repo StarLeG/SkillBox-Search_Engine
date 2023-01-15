@@ -31,6 +31,11 @@ std::string ConverterJSON::GetNameProgramm() const
 	return config["config"]["name"].get<std::string>();
 }
 
+std::string ConverterJSON::GetVersionProgramm() const
+{
+	return config["config"]["version"].get<std::string>();
+}
+
 int ConverterJSON::GetResponsesLimit() const
 {
 

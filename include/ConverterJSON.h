@@ -24,10 +24,17 @@ public:
 	std::vector<std::string> GetTextDocuments() const;
 
 /**
-* Метод считывает поле, "name", с названием поискового движка
+* Метод считывает поле, "version", с названием поискового движка
 * @return
 */
 	std::string GetNameProgramm() const;
+
+/**
+* Метод считывает поле, "name",  с номером версии поискового движка
+* @return
+*/
+	std::string GetVersionProgramm() const;
+
 /**
 * Метод считывает поле max_responses для определения предельного
 * количества ответов на один запрос
