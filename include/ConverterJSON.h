@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <exception>
 
 #include <nlohmann/json.hpp>
 
@@ -13,15 +14,20 @@
 class ConverterJSON
 {
 public:
-	ConverterJSON() ;
+	ConverterJSON();
 
 /**
 * Метод получения содержимого файлов
 * @return Возвращает список с содержимым файлов перечисленных
 * в config.json
 */
-	std::vector<std::string> GetTextDocuments();
+	std::vector<std::string> GetTextDocuments() const;
 
+/**
+* Метод считывает поле, "name", с названием поискового движка
+* @return
+*/
+	std::string GetNameProgramm() const;
 /**
 * Метод считывает поле max_responses для определения предельного
 * количества ответов на один запрос
@@ -44,7 +50,6 @@ public:
 private:
 
 	nlohmann::json config;
-
 
 	bool readConfigFile();
 };

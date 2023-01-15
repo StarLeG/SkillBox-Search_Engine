@@ -1,11 +1,13 @@
 #include "ConverterJSON.h"
 
+
+
 ConverterJSON::ConverterJSON()
 {
 	this->readConfigFile();
 }
 
-std::vector<std::string> ConverterJSON::GetTextDocuments()
+std::vector<std::string> ConverterJSON::GetTextDocuments() const
 {
 
 
@@ -22,6 +24,11 @@ bool ConverterJSON::readConfigFile()
 	configFile >> this->config;
 	configFile.close();
 	return 1;
+}
+
+std::string ConverterJSON::GetNameProgramm() const
+{
+	return config["config"]["name"].get<std::string>();
 }
 
 int ConverterJSON::GetResponsesLimit() const
