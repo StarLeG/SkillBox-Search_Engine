@@ -4,12 +4,7 @@
 ConverterJSON::ConverterJSON()
 {
 	this->readConfigFile();
-}
-
-std::vector<std::string> ConverterJSON::GetTextDocuments() const
-{
-
-
+	this->readRequestsFile();
 }
 
 bool ConverterJSON::readConfigFile()
@@ -74,6 +69,22 @@ bool ConverterJSON::readConfigFile()
 	return true;
 }
 
+bool ConverterJSON::readRequestsFile()
+{
+	std::ifstream RequestsFile("requests.json");
+	if(!RequestsFile.is_open())
+	{
+		std::ofstream RequestsFile("requests.json");
+		if(!RequestsFile.is_open())
+		{
+			std::cerr << "Requests file is missing" << std::endl;
+			return false;
+		}
+		RequestsFile.close();
+	}
+
+}
+
 std::string ConverterJSON::GetNameProgramm() const
 {
 	return configJson.config.name;
@@ -87,4 +98,10 @@ std::string ConverterJSON::GetVersionProgramm() const
 int ConverterJSON::GetResponsesLimit() const
 {
 	return configJson.config.max_responses;
+}
+
+std::vector<std::string> ConverterJSON::GetTextDocuments() const
+{
+
+
 }

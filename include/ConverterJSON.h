@@ -8,12 +8,13 @@
 
 #include <nlohmann/json.hpp>
 
-
 /**
 * Структура для хранения параметров из файла config.json
 */
-struct ConfigJson{
-	struct {
+struct ConfigJson
+{
+	struct
+	{
 		std::string name;
 		std::string version;
 		int max_responses;
@@ -21,6 +22,13 @@ struct ConfigJson{
 	std::vector<std::string> files;
 };
 
+/**
+* Структура для хранения параметров для файла request.json
+*/
+struct RequestsJson
+{
+	std::vector<std::string> requests;
+};
 
 /**
 * Класс для работы с JSON-файлами
@@ -29,6 +37,8 @@ class ConverterJSON
 {
 public:
 	ConfigJson configJson;
+	RequestsJson requestsJson;
+
 	ConverterJSON();
 
 /**
@@ -61,7 +71,7 @@ public:
 * Метод получения запросов из файла requests.json
 * @return возвращает список запросов из файла requests.json
 */
-	std::vector<std::string> GetRequests();
+	std::vector<std::string> GetRequests() const;
 
 /**
 * Положить в файл answers.json результаты поисковых запросов
@@ -74,22 +84,29 @@ private:
 	nlohmann::json config;
 
 	bool readConfigFile();
+	bool readRequestsFile();
 };
 
-struct ConfigFileMissing : public std::exception {
-	const char * what () const throw () {
+struct ConfigFileMissing : public std::exception
+{
+	const char* what() const throw()
+	{
 		return "Config file is missing";
 	}
 };
 
-struct ConfigFileEmpty : public std::exception {
-	const char * what () const throw () {
+struct ConfigFileEmpty : public std::exception
+{
+	const char* what() const throw()
+	{
 		return "Config file is empty";
 	}
 };
 
-struct IncorrectFileVersion : public std::exception {
-	const char * what () const throw () {
+struct IncorrectFileVersion : public std::exception
+{
+	const char* what() const throw()
+	{
 		return "Incorrect file version";
 	}
 };
