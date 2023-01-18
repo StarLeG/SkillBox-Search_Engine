@@ -87,3 +87,9 @@ struct ConfigFileEmpty : public std::exception {
 		return "Config file is empty";
 	}
 };
+
+struct IncorrectFileVersion : public std::exception {
+	const char * what () const throw () {
+		return "Incorrect file version";
+	}
+};
