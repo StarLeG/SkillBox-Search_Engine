@@ -76,3 +76,14 @@ private:
 	bool readConfigFile();
 };
 
+struct ConfigFileMissing : public std::exception {
+	const char * what () const throw () {
+		return "Config file is missing";
+	}
+};
+
+struct ConfigFileEmpty : public std::exception {
+	const char * what () const throw () {
+		return "Config file is empty";
+	}
+};
