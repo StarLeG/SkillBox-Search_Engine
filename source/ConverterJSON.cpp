@@ -68,14 +68,5 @@ std::string ConverterJSON::GetVersionProgramm() const
 
 int ConverterJSON::GetResponsesLimit() const
 {
-
-	const int defaultResponsesLimit = 5;
-	if(config["config"]["max_responses"].is_null())
-	{
-		return defaultResponsesLimit;
-	}
-	else
-	{
-		return config["config"]["max_responses"].get<int>();
-	}
+	return config["config"]["max_responses"].get<int>();
 }
