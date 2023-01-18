@@ -76,15 +76,15 @@ bool ConverterJSON::readConfigFile()
 
 std::string ConverterJSON::GetNameProgramm() const
 {
-	return config["config"]["name"].get<std::string>();
+	return configJson.config.name;
 }
 
 std::string ConverterJSON::GetVersionProgramm() const
 {
-	return config["config"]["version"].get<std::string>();
+	return configJson.config.version;
 }
 
 int ConverterJSON::GetResponsesLimit() const
 {
-	return config["config"]["max_responses"].get<int>();
+	return configJson.config.max_responses;
 }
