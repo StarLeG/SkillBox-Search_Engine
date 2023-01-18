@@ -8,12 +8,27 @@
 
 #include <nlohmann/json.hpp>
 
+
+/**
+* Структура для хранения параметров из файла config.json
+*/
+struct ConfigJson{
+	struct {
+		std::string name;
+		std::string version;
+		int max_responses;
+	} config;
+	std::vector<std::string> files;
+};
+
+
 /**
 * Класс для работы с JSON-файлами
 */
 class ConverterJSON
 {
 public:
+	ConfigJson configJson;
 	ConverterJSON();
 
 /**
@@ -60,3 +75,4 @@ private:
 
 	bool readConfigFile();
 };
+
