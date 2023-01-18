@@ -1,7 +1,6 @@
 #include "ConverterJSON.h"
 
 
-
 ConverterJSON::ConverterJSON()
 {
 	this->readConfigFile();
