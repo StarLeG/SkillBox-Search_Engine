@@ -1,7 +1,7 @@
 {
   "config": {
-    "name": "SearchEngine",
-    "version": "0.1",
+    "name": "Search Engine",
+    "version": "0.0.1",
     "max_responses": 8
   },
   "files": [

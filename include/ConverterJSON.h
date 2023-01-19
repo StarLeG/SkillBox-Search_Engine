@@ -5,8 +5,22 @@
 #include <fstream>
 #include <iostream>
 #include <exception>
+#include "version.h"
 
 #include <nlohmann/json.hpp>
+
+
+/**
+*	Структура для хранения параметров из файла config.json
+*/
+	struct Config_json{
+		struct {
+			std::string name;
+			std::string version;
+			int max_responses;
+		}config;
+		std::vector<std::string> files;
+	};
 
 /**
 * Структура для хранения параметров из файла config.json
@@ -41,6 +55,8 @@ public:
 
 	ConverterJSON();
 
+	Config_json config_json;
+
 /**
 * Метод получения содержимого файлов
 * @return Возвращает список с содержимым файлов перечисленных
@@ -58,7 +74,7 @@ public:
 * Метод считывает поле, "name",  с номером версии поискового движка
 * @return
 */
-	std::string GetVersionProgramm() const;
+	std::string GetVersionFile() const;
 
 /**
 * Метод считывает поле max_responses для определения предельного

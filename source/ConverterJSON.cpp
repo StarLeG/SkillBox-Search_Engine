@@ -25,6 +25,11 @@ bool ConverterJSON::readConfigFile()
 			throw  ConfigFileEmpty();
 		}
 
+		if(VERSION != config["config"]["version"])
+		{
+			throw IncorrectFileVersion();
+		}
+
 		if (!config["config"]["name"].is_null())
 		{
 			configJson.config.name = config["config"]["name"];
@@ -37,10 +42,6 @@ bool ConverterJSON::readConfigFile()
 		if (!config["config"]["version"].is_null())
 		{
 			configJson.config.version = config["config"]["version"];
-		}
-		else
-		{
-			configJson.config.version = "0.1";
 		}
 
 		if (!config["config"]["max_responses"].is_null())
@@ -90,7 +91,7 @@ std::string ConverterJSON::GetNameProgramm() const
 	return configJson.config.name;
 }
 
-std::string ConverterJSON::GetVersionProgramm() const
+std::string ConverterJSON::GetVersionFile() const
 {
 	return configJson.config.version;
 }
