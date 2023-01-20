@@ -1,6 +1,6 @@
 #include <iostream>
 #include "ConverterJSON.h"
-
+#include <QString>
 
 
 int main()
