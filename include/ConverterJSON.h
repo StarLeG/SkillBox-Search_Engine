@@ -9,10 +9,9 @@
 
 #include <nlohmann/json.hpp>
 
-
 /**
-* Структура для хранения параметров из файла config.json
-*/
+ * Структура для хранения параметров из файла config.json
+ */
 struct ConfigJson
 {
 	struct
@@ -25,74 +24,82 @@ struct ConfigJson
 };
 
 /**
-* Структура для хранения параметров для файла request.json
-*/
+ * Структура для хранения параметров для файла request.json
+ */
 struct RequestsJson
 {
 	std::vector<std::string> requests;
 };
 
 /**
-* Класс для работы с JSON-файлами
-*/
+ * Класс для работы с JSON-файлами
+ */
 class ConverterJSON
 {
 public:
 	ConfigJson configJson;
 	RequestsJson requestsJson;
 
-	ConverterJSON();	
+	ConverterJSON();
 
-/**
-* Метод получения содержимого файлов
-* @return Возвращает список с содержимым файлов перечисленных
-* в config.json
-*/
+	/**
+	 * Метод получения содержимого файлов
+	 * @return Возвращает список с содержимым файлов перечисленных
+	 * в config.json
+	 */
 	std::vector<std::string> GetTextDocuments() const;
 
-/**
-* Метод считывает поле, "version", с названием поискового движка
-* @return
-*/
+	/**
+	 * Метод считывает поле, "name", с названием поискового движка
+	 * @return
+	 */
 	std::string GetNameProgramm() const;
 
-/**
-* Метод считывает поле, "name",  с номером версии поискового движка
-* @return
-*/
+	/**
+	 * Метод считывает поле, "version",  с номером версии поискового движка
+	 * @return
+	 */
 	std::string GetVersionFile() const;
 
-/**
-* Метод считывает поле max_responses для определения предельного
-* количества ответов на один запрос
-* @return
-*/
+	/**
+	 * Метод считывает поле max_responses для определения предельного
+	 * количества ответов на один запрос
+	 * @return
+	 */
 	int GetResponsesLimit() const;
 
-/**
-* Метод получения запросов из файла requests.json
-* @return возвращает список запросов из файла requests.json
-*/
+	/**
+	 * Метод получения запросов из файла requests.json
+	 * @return возвращает список запросов из файла requests.json
+	 */
 	std::vector<std::string> GetRequests() const;
 
-/**
-* Положить в файл answers.json результаты поисковых запросов
-*/
+	/**
+	 * Положить в файл answers.json результаты поисковых запросов
+	 */
 	void putAnswers(std::vector<std::vector<std::pair<int, float>>>
-	answers);
+						answers);
 
 private:
-
 	nlohmann::json config;
-	nlohmann::json requests; 
+	nlohmann::json requests;
 
+	/**
+	 * Метод получения запросов из файла requests.json
+	 * @return
+	 */
 	bool readConfigFile();
+
+	/**
+	 * Метод получения запросов из файла requests.json
+	 * @return 
+	 */
 	bool readRequestsFile();
 };
 
 struct ConfigFileMissing : public std::exception
 {
-	const char* what() const throw()
+	const char *what() const throw()
 	{
 		return "Config file is missing";
 	}
@@ -100,7 +107,7 @@ struct ConfigFileMissing : public std::exception
 
 struct ConfigFileEmpty : public std::exception
 {
-	const char* what() const throw()
+	const char *what() const throw()
 	{
 		return "Config file is empty";
 	}
@@ -108,7 +115,7 @@ struct ConfigFileEmpty : public std::exception
 
 struct IncorrectFileVersion : public std::exception
 {
-	const char* what() const throw()
+	const char *what() const throw()
 	{
 		return "Incorrect file version";
 	}

@@ -121,4 +121,30 @@ int ConverterJSON::GetResponsesLimit() const
 
 std::vector<std::string> ConverterJSON::GetTextDocuments() const
 {
+	std::vector<std::string> textDocuments;
+	
+	if(!configJson.files.empty())
+	{
+		for(int i = 0; i < configJson.files.size(); i++)
+		{
+			if(configJson.files[i].empty())
+			{
+				std::cerr << "There are no data" << std::endl;
+			}
+			else
+			{
+				std::ifstream path(configJson.files[i]);
+
+				path.close();
+			}
+		}
+
+	}
+	else
+	{
+		std::cerr << "There are no data" << std::endl;
+	}
+
+	return textDocuments;
+	
 }
