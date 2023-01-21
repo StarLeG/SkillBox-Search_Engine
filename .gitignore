@@ -3,3 +3,4 @@ cmake-build-debug/
 boost_1_81_0/
 lib/
 build/
+.vscode/

@@ -19,8 +19,8 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 add_subdirectory(source)
 add_subdirectory(lib/nlohmann_json)
-#add_subdirectory(tests)
-#add_subdirectory(lib/googletest)
+add_subdirectory(tests)
+add_subdirectory(lib/googletest)
 
 
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
@@ -29,6 +29,7 @@ target_link_libraries(${PROJECT_NAME}  PRIVATE Qt5::Widgets)
 
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/config.json    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/source)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/requests.json    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/source)
 
 
 

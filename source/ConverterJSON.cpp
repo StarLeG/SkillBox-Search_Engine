@@ -1,6 +1,5 @@
 #include "ConverterJSON.h"
 
-
 ConverterJSON::ConverterJSON()
 {
 	this->readConfigFile();
@@ -22,10 +21,10 @@ bool ConverterJSON::readConfigFile()
 
 		if (config["config"].is_null() || config["config"].empty())
 		{
-			throw  ConfigFileEmpty();
+			throw ConfigFileEmpty();
 		}
 
-		if(VERSION != config["config"]["version"])
+		if (VERSION != config["config"]["version"])
 		{
 			throw IncorrectFileVersion();
 		}
@@ -58,11 +57,11 @@ bool ConverterJSON::readConfigFile()
 			configJson.files.emplace_back(*it);
 		}
 	}
-	catch(ConfigFileMissing& ex)
+	catch (ConfigFileMissing &ex)
 	{
 		std::cout << ex.what() << std::endl;
 	}
-	catch(ConfigFileEmpty& ex)
+	catch (ConfigFileEmpty &ex)
 	{
 		std::cout << ex.what() << std::endl;
 	}
@@ -72,18 +71,37 @@ bool ConverterJSON::readConfigFile()
 
 bool ConverterJSON::readRequestsFile()
 {
+
 	std::ifstream RequestsFile("requests.json");
-	if(!RequestsFile.is_open())
+	if (!RequestsFile.is_open())
 	{
-		std::ofstream RequestsFile("requests.json");
-		if(!RequestsFile.is_open())
-		{
-			std::cerr << "Requests file is missing" << std::endl;
-			return false;
-		}
+		std::cerr << "Requests.json file was not found." << std::endl;
+		return false;
+	}
+	else
+	{
+		RequestsFile >> this->requests;
 		RequestsFile.close();
 	}
 
+	if(this->requests.empty())
+	{
+		std::cerr << "Requests.json File is empty." << std::endl;
+		return false;
+	}
+	else if(this->requests["requests"].is_null())
+	{
+		return false;
+	}
+	else
+	{
+		for(auto it = requests["requests"].begin(); it != requests["requests"].end(); it++)
+		{
+			requestsJson.requests.emplace_back(*it);
+		}
+	}
+
+	return true;
 }
 
 std::string ConverterJSON::GetNameProgramm() const
@@ -103,6 +121,4 @@ int ConverterJSON::GetResponsesLimit() const
 
 std::vector<std::string> ConverterJSON::GetTextDocuments() const
 {
-
-
 }

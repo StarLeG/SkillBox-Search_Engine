@@ -1,6 +1,6 @@
 #include <iostream>
 #include "ConverterJSON.h"
-#include <QString>
+
 
 
 int main()
@@ -9,6 +9,8 @@ int main()
 
 	std::cout << cj.configJson.config.name << std::endl;
 	std::cout << "Program version: " << cj.configJson.config.version << std::endl;
+
+	
 
 
 

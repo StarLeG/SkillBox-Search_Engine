@@ -11,18 +11,6 @@
 
 
 /**
-*	Структура для хранения параметров из файла config.json
-*/
-	struct Config_json{
-		struct {
-			std::string name;
-			std::string version;
-			int max_responses;
-		}config;
-		std::vector<std::string> files;
-	};
-
-/**
 * Структура для хранения параметров из файла config.json
 */
 struct ConfigJson
@@ -53,9 +41,7 @@ public:
 	ConfigJson configJson;
 	RequestsJson requestsJson;
 
-	ConverterJSON();
-
-	Config_json config_json;
+	ConverterJSON();	
 
 /**
 * Метод получения содержимого файлов
@@ -98,6 +84,7 @@ public:
 private:
 
 	nlohmann::json config;
+	nlohmann::json requests; 
 
 	bool readConfigFile();
 	bool readRequestsFile();
