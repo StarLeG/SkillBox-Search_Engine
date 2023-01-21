@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.25.2)
 project(EngineSearch VERSION 0.0.1)
 
 
 set(CMAKE_CXX_STANDARD 17)
 set(MY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 
-set(CMAKE_PREFIX_PATH "\\Qt\\5.15.2\\mingw81_64\\lib\\cmake")
+set(CMAKE_PREFIX_PATH "..\\..\\..\\..\\..\\cmake")
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -29,7 +29,8 @@ target_link_libraries(${PROJECT_NAME}  PRIVATE Qt5::Widgets)
 
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/config.json    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/source)
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/requests.json    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/source)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/requests.json  DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/source)
+
 
 
 

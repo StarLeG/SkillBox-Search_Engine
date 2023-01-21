@@ -11,7 +11,8 @@ file(GLOB
 add_executable(${PROJECT_NAME} ${CPP_SOURCES}
                                 ${MY_INCLUDE_DIR}/ConverterJSON.h
                                 ${MY_INCLUDE_DIR}/config.h.in
-                                ${MY_INCLUDE_DIR}/version.h)
+                                ${MY_INCLUDE_DIR}/version.h  
+                                ${MY_INCLUDE_DIR}/invertedIndex.h)
 
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${MY_INCLUDE_DIR})
