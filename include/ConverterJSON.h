@@ -37,8 +37,7 @@ struct RequestsJson
 class ConverterJSON
 {
 public:
-	ConfigJson configJson;
-	RequestsJson requestsJson;
+
 
 	ConverterJSON();
 
@@ -83,6 +82,8 @@ public:
 private:
 	nlohmann::json config;
 	nlohmann::json requests;
+	ConfigJson configJson;
+	RequestsJson requestsJson;
 
 	/**
 	 * Метод получения запросов из файла requests.json
