@@ -5,7 +5,6 @@
 #include <fstream>
 #include <iostream>
 #include <exception>
-#include <sstream>
 #include "version.h"
 
 #include <nlohmann/json.hpp>
