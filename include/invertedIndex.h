@@ -4,6 +4,10 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <cctype>
+#include <sstream>
+
+#include "ConverterJSON.h"
 
 
 struct Entry
