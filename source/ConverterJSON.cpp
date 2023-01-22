@@ -156,3 +156,14 @@ std::vector<std::string> ConverterJSON::GetTextDocuments() const
 	return textDocuments;
 	
 }
+
+std::vector<std::string> ConverterJSON::GetRequests() const
+{
+	std::vector<std::string> request;
+
+	for(auto it = this->requestsJson.requests.begin(); it != requestsJson.requests.end(); it++)
+	{
+		request.emplace_back(*it);
+	}
+	return request;
+}
