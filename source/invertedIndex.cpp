@@ -40,7 +40,22 @@ void InvertedIndex::UpdateDocumentBase(std::vector<std::string> input_docs)
 			}
 			else
 			{
-				iterator->second[doc_id].count++;
+				for(int i = 0; i < iterator->second.size(); i++)
+				{
+					if(iterator->second[i].doc_id == doc_id)
+					{
+						iterator->second[i].count++;
+
+					}
+					else
+					{
+						iterator->second.resize(iterator->second.size() + 1);
+						iterator->second[iterator->second.size() - 1].doc_id = doc_id;
+						iterator->second[iterator->second.size() - 1].count = 1;
+
+					}
+				}
+
 			}
 
 		}
