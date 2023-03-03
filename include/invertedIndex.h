@@ -6,6 +6,7 @@
 #include <string>
 #include <cctype>
 #include <sstream>
+#include <algorithm>
 
 #include "ConverterJSON.h"
 
@@ -44,5 +45,6 @@ public:
 private:
     std::vector<std::string> docs;                             // список содержимого документов
     std::map<std::string, std::vector<Entry>> freq_dictionary; // частотный словарь
+	Entry entry{};
 
 };

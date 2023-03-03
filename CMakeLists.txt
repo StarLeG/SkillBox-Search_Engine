@@ -1,21 +1,13 @@
-cmake_minimum_required(VERSION 3.25.2)
+cmake_minimum_required(VERSION 3.24.2)
 project(EngineSearch VERSION 0.0.1)
-
 
 set(CMAKE_CXX_STANDARD 17)
 set(MY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 
 set(CMAKE_PREFIX_PATH "..\\..\\..\\..\\..\\cmake")
+set(MY_SRC_DIR ${CMAKE_SOURCE_DIR}/source)
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
-
-if(CMAKE_VERSION VERSION_LESS "3.25.1")
-    set(CMAKE_INCLUDE_CURRENT_DIR ON)
-endif()
-
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+enable_testing()
 
 add_subdirectory(source)
 add_subdirectory(lib/nlohmann_json)
@@ -24,8 +16,11 @@ add_subdirectory(lib/googletest)
 
 
 
+
+
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
-target_link_libraries(${PROJECT_NAME}  PRIVATE Qt5::Widgets)
+
+
 
 
 
