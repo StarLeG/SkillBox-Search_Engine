@@ -5,11 +5,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 set(SrcFiles
         ${MY_SRC_DIR}/invertedIndex.cpp
         ${MY_SRC_DIR}/ConverterJSON.cpp
+        ${MY_SRC_DIR}/SearchServer.cpp
         )
 
 set(TestsFiles
         InvertedIndex_test.cpp
-
+        SearchEngine_test.cpp
         )
 
 add_executable(GtestTests ${TestsFiles} ${SrcFiles})
