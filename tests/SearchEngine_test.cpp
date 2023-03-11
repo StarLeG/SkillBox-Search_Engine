@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "SearchServer.h"
-#include "ConverterJSON.h"
+
+
 using namespace std;
 
 TEST(TestCaseSearchServer, TestSimple) {
@@ -66,5 +67,6 @@ InvertedIndex idx;
 idx.UpdateDocumentBase(docs);
 SearchServer srv(idx);
 std::vector<vector<RelativeIndex>> result = srv.search(request);
+
 ASSERT_EQ(result, expected);
 }
