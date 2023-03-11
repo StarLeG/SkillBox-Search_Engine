@@ -1,6 +1,6 @@
 #include "invertedIndex.h"
 
-void InvertedIndex::UpdateDocumentBase(std::vector<std::string> input_docs)
+void InvertedIndex::UpdateDocumentBase(std::vector<std::string>& input_docs)
 {
 	std::map<std::string, Entry> fileFreqDictionary;
 	size_t docId = 0;
