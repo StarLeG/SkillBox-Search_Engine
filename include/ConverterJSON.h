@@ -76,7 +76,7 @@ public:
 	/**
 	 * Положить в файл answers.json результаты поисковых запросов
 	 */
-	void putAnswers(std::vector<std::vector<std::pair<int, float>>> answers);
+	void putAnswers(std::vector<std::vector<std::pair<int, float>>>& answers);
 
 private:
 	nlohmann::json config;
@@ -99,7 +99,7 @@ private:
 
 struct ConfigFileMissing : public std::exception
 {
-	const char* what() const throw()
+	const char *what() const throw()
 	{
 		return "Config file is missing";
 	}
@@ -107,7 +107,7 @@ struct ConfigFileMissing : public std::exception
 
 struct ConfigFileEmpty : public std::exception
 {
-	const char* what() const throw()
+	const char *what() const throw()
 	{
 		return "Config file is empty";
 	}
@@ -115,7 +115,7 @@ struct ConfigFileEmpty : public std::exception
 
 struct IncorrectFileVersion : public std::exception
 {
-	const char* what() const throw()
+	const char *what() const throw()
 	{
 		return "Incorrect file version";
 	}
