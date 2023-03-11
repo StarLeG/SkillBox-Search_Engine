@@ -18,6 +18,14 @@ int main()
 	ii.UpdateDocumentBase(text);
 
 
+	SearchServer srv(ii);
+
+	auto Requests = cj.GetRequests();
+
+	auto Answer = srv.search(Requests);
+
+
+
 
 	return 0;
 }
