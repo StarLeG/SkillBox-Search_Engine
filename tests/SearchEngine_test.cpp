@@ -22,7 +22,7 @@ const std::vector<vector<RelativeIndex>> expected = {
         }
 };
 InvertedIndex idx;
-idx.UpdateDocumentBase(docs);
+idx.UpdateDocumentBase(const_cast<vector<std::string>&>(docs));
 SearchServer srv(idx);
 std::vector<vector<RelativeIndex>> result = srv.search(request);
 ASSERT_EQ(result, expected);
@@ -64,7 +64,7 @@ const std::vector<vector<RelativeIndex>> expected = {
         }
 };
 InvertedIndex idx;
-idx.UpdateDocumentBase(docs);
+idx.UpdateDocumentBase(const_cast<vector<std::string>&>(docs));
 SearchServer srv(idx);
 std::vector<vector<RelativeIndex>> result = srv.search(request);
 
