@@ -1,13 +1,11 @@
 #pragma once
 
-#include "SearchServer.h"
 #include <vector>
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <exception>
 #include "version.h"
-
 
 #include <nlohmann/json.hpp>
 
@@ -78,10 +76,7 @@ public:
 	/**
 	 * Положить в файл answers.json результаты поисковых запросов
 	 */
-	void putAnswers(const std::vector<std::vector<RelativeIndex>>& answers_) const;
-
-
-
+	void putAnswers(std::vector<std::vector<std::pair<int, float>>> answers);
 
 private:
 	nlohmann::json config;
@@ -100,12 +95,11 @@ private:
 	 * @return 
 	 */
 	bool readRequestsFile();
-
 };
 
 struct ConfigFileMissing : public std::exception
 {
-	const char *what() const throw()
+	const char* what() const throw()
 	{
 		return "Config file is missing";
 	}
@@ -113,7 +107,7 @@ struct ConfigFileMissing : public std::exception
 
 struct ConfigFileEmpty : public std::exception
 {
-	const char *what() const throw()
+	const char* what() const throw()
 	{
 		return "Config file is empty";
 	}
@@ -121,7 +115,7 @@ struct ConfigFileEmpty : public std::exception
 
 struct IncorrectFileVersion : public std::exception
 {
-	const char *what() const throw()
+	const char* what() const throw()
 	{
 		return "Incorrect file version";
 	}
