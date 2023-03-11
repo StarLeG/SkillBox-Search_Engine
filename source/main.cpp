@@ -4,9 +4,9 @@
 #include "SearchServer.h"
 
 
+
 int main()
 {
-
 	ConverterJSON cj;
 	InvertedIndex ii;
 
@@ -17,13 +17,6 @@ int main()
 	auto text = cj.GetTextDocuments();
 	ii.UpdateDocumentBase(text);
 
-	SearchServer srv(ii);
-
-	auto Requests = cj.GetRequests();
-
-	auto Answer = srv.search(Requests);
-
-	cj.putAnswers(Answer);
 
 
 	return 0;
