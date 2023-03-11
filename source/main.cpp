@@ -14,9 +14,8 @@ int main()
 	std::cout << cj.GetNameProgramm() << std::endl;
 	std::cout << "Program version: " << cj.GetVersionFile() << std::endl;
 
-
-	ii.UpdateDocumentBase(cj.GetTextDocuments());
-
+	auto text = cj.GetTextDocuments();
+	ii.UpdateDocumentBase(text);
 
 	SearchServer srv(ii);
 
