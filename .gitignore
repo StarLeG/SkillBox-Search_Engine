@@ -5,4 +5,4 @@ lib/
 build/
 .vscode/
 *.code-workspace
-tests/GtestTests
+tests/*.exe
