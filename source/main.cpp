@@ -24,7 +24,27 @@ int main()
 
 	auto Answer = srv.search(Requests);
 
+	auto answer = std::vector<std::vector<std::pair<int, float>>>();
 
+	answer.resize(Answer.size());
+
+	int index = 0;
+
+	for(const auto& it : Answer )
+	{
+		std::vector<std::pair<int, float>> ans;
+		for(int i = 0; i < it.size();i++)
+		{
+			ans.resize(it.size());
+			ans[i].first = it[i].doc_id;
+			ans[i].second = it[i].rank;
+		}
+
+		answer[index] = ans ;
+		index++;
+	}
+
+	cj.PutAnswers(answer);
 
 
 	return 0;
