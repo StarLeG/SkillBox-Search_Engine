@@ -168,7 +168,30 @@ std::vector<std::string> ConverterJSON::GetRequests() const
 	return request;
 }
 
-void ConverterJSON::putAnswers(std::vector<std::vector<std::pair<int, float>>>& answers)
+void ConverterJSON::PutAnswers(std::vector<std::vector<std::pair<int, float>>>& answers)
 {
+	nlohmann::json answ;
+	int ind = 1;
+	auto answers_file = std::ofstream("answers.json", std::ios::trunc);
+	for (const auto& a: answers)
+	{
+		nlohmann::json request;
+		request["result"] = !a.empty();
+		for (const auto& p: a) {
+			nlohmann::json dict_pair;
+			dict_pair["docid"] = p.first;
+			dict_pair["rank"] = p.second;
+			request["relevance"].push_back(dict_pair);
+		}
+		std::string name = "request00" + std::to_string(ind);
+		answ[name] = request;
+		ind++;
+	}
+	nlohmann::json file;
+	file["answers"] = answ;
+
+	answers_file << file.dump(4);
 
 }
+
+
