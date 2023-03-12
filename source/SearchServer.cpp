@@ -46,13 +46,13 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(const std::vector<s
 		for (auto& word: words)
 		{
 			auto freq_dictionary = this->_index.GetWordCount(word);
-			int sum = 0;
+			size_t sum = 0;
 			for (const auto& entry: freq_dictionary)
 			{
 				sum += entry.count;
 			}
 			auto wordCount = std::make_pair(word, sum);
-			wordsCount.push_back(wordCount);
+			wordsCount.emplace_back(wordCount);
 		}
 
 		std::sort(wordsCount.begin(), wordsCount.end(),
@@ -76,7 +76,7 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(const std::vector<s
 					{
 						docs[entry.doc_id] = std::vector<std::pair<std::string, size_t>>();
 					}
-					docs[entry.doc_id].push_back(std::make_pair(key, entry.count));
+					docs[entry.doc_id].emplace_back(std::make_pair(key, entry.count));
 
 				}
 			}
@@ -111,7 +111,7 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(const std::vector<s
 				}
 			}
 		}
-		answers.push_back(answer);
+		answers.emplace_back(answer);
 	}
 
 
