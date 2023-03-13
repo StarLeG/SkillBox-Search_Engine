@@ -168,7 +168,7 @@ std::vector<std::string> ConverterJSON::GetRequests() const
 	return request;
 }
 
-void ConverterJSON::PutAnswers(std::vector<std::vector<std::pair<int, float>>>& answers)
+void ConverterJSON::PutAnswers(const std::vector<std::vector<std::pair<int, float>>>& answers) const
 {
 	nlohmann::json answ;
 	int ind = 1;

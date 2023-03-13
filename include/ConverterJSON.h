@@ -76,7 +76,7 @@ public:
 	/**
 	 * Положить в файл answers.json результаты поисковых запросов
 	 */
-	void PutAnswers(std::vector<std::vector<std::pair<int, float>>>& answers);
+	void PutAnswers(const std::vector<std::vector<std::pair<int, float>>>& answers) const;
 
 private:
 	nlohmann::json config;
