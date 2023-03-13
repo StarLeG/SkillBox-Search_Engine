@@ -1,13 +1,17 @@
 #pragma once
+
 #include "invertedIndex.h"
 #include <unordered_set>
 
-struct RelativeIndex{
-		size_t doc_id;
-		float rank;
-		bool operator ==(const RelativeIndex& other) const {
-			return (doc_id == other.doc_id && rank == other.rank);
-		}
+struct RelativeIndex
+{
+	size_t doc_id;
+	float rank;
+
+	bool operator==(const RelativeIndex& other) const
+	{
+		return (doc_id == other.doc_id && rank == other.rank);
+	}
 
 	RelativeIndex(size_t doc_id, float rank) : doc_id(doc_id), rank(rank)
 	{
@@ -15,7 +19,8 @@ struct RelativeIndex{
 };
 
 
-class SearchServer {
+class SearchServer
+{
 public:
 /**
 * @param idx в конструктор класса передаётся ссылка на класс
@@ -23,7 +28,10 @@ InvertedIndex,
 * чтобы SearchServer мог узнать частоту слов встречаемых в
 запросе
 */
-	SearchServer(InvertedIndex& idx) : _index(idx){ };
+	SearchServer(InvertedIndex& idx) : _index(idx)
+	{
+	};
+
 /**
 * Метод обработки поисковых запросов
 * @param queries_input поисковые запросы взятые из файла

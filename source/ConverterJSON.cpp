@@ -57,11 +57,11 @@ bool ConverterJSON::readConfigFile()
 			configJson.files.emplace_back(*it);
 		}
 	}
-	catch (ConfigFileMissing &ex)
+	catch (ConfigFileMissing& ex)
 	{
 		std::cout << ex.what() << std::endl;
 	}
-	catch (ConfigFileEmpty &ex)
+	catch (ConfigFileEmpty& ex)
 	{
 		std::cout << ex.what() << std::endl;
 	}
@@ -84,18 +84,18 @@ bool ConverterJSON::readRequestsFile()
 		RequestsFile.close();
 	}
 
-	if(this->requests.empty())
+	if (this->requests.empty())
 	{
 		std::cerr << "Requests.json File is empty." << std::endl;
 		return false;
 	}
-	else if(this->requests["requests"].is_null())
+	else if (this->requests["requests"].is_null())
 	{
 		return false;
 	}
 	else
 	{
-		for(auto it = requests["requests"].begin(); it != requests["requests"].end(); it++)
+		for (auto it = requests["requests"].begin(); it != requests["requests"].end(); it++)
 		{
 			requestsJson.requests.emplace_back(*it);
 		}
@@ -126,22 +126,22 @@ std::vector<std::string> ConverterJSON::GetTextDocuments() const
 	std::string buffer;
 	std::string buf;
 
-	for(auto it = configJson.files.begin(); it != configJson.files.end(); it++)
+	for (auto it = configJson.files.begin(); it != configJson.files.end(); it++)
 	{
 		path = *it;
 		std::ifstream txtDoc(path);
 
-		if(!txtDoc.is_open())
+		if (!txtDoc.is_open())
 		{
 			std::cerr << "Error open " << path << std::endl;
 		}
 		else
 		{
-			while(!txtDoc.eof())
+			while (!txtDoc.eof())
 			{
 
-				std::getline(txtDoc,buffer);
-				buf +=  buffer + "\n";
+				std::getline(txtDoc, buffer);
+				buf += buffer + "\n";
 				buffer.clear();
 			}
 			textDocuments.emplace_back(buf);
@@ -152,16 +152,15 @@ std::vector<std::string> ConverterJSON::GetTextDocuments() const
 	}
 
 
-
 	return textDocuments;
-	
+
 }
 
 std::vector<std::string> ConverterJSON::GetRequests() const
 {
 	std::vector<std::string> request;
 
-	for(auto it = this->requestsJson.requests.begin(); it != requestsJson.requests.end(); it++)
+	for (auto it = this->requestsJson.requests.begin(); it != requestsJson.requests.end(); it++)
 	{
 		request.emplace_back(*it);
 	}
@@ -177,7 +176,8 @@ void ConverterJSON::PutAnswers(const std::vector<std::vector<std::pair<int, floa
 	{
 		nlohmann::json request;
 		request["result"] = !a.empty();
-		for (const auto& p: a) {
+		for (const auto& p: a)
+		{
 			nlohmann::json dict_pair;
 			dict_pair["docid"] = p.first;
 			dict_pair["rank"] = p.second;
