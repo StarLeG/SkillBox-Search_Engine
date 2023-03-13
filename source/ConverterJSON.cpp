@@ -52,9 +52,9 @@ bool ConverterJSON::readConfigFile()
 			configJson.config.max_responses = 5;
 		}
 
-		for (auto it = config["files"].begin(); it != config["files"].end(); it++)
+		for (auto & it : config["files"])
 		{
-			configJson.files.emplace_back(*it);
+			configJson.files.emplace_back(it);
 		}
 	}
 	catch (ConfigFileMissing& ex)
@@ -95,9 +95,9 @@ bool ConverterJSON::readRequestsFile()
 	}
 	else
 	{
-		for (auto it = requests["requests"].begin(); it != requests["requests"].end(); it++)
+		for (auto & it : requests["requests"])
 		{
-			requestsJson.requests.emplace_back(*it);
+			requestsJson.requests.emplace_back(it);
 		}
 	}
 
@@ -126,9 +126,9 @@ std::vector<std::string> ConverterJSON::GetTextDocuments() const
 	std::string buffer;
 	std::string buf;
 
-	for (auto it = configJson.files.begin(); it != configJson.files.end(); it++)
+	for (const auto & file : configJson.files)
 	{
-		path = *it;
+		path = file;
 		std::ifstream txtDoc(path);
 
 		if (!txtDoc.is_open())
@@ -167,7 +167,7 @@ std::vector<std::string> ConverterJSON::GetRequests() const
 	return request;
 }
 
-void ConverterJSON::PutAnswers(const std::vector<std::vector<std::pair<int, float>>>& answers) const
+void ConverterJSON::PutAnswers(const std::vector<std::vector<std::pair<int, float>>>& answers)
 {
 	nlohmann::json answ;
 	int ind = 1;
