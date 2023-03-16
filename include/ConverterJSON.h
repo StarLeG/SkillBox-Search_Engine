@@ -47,32 +47,32 @@ public:
 	 * @return Возвращает список с содержимым файлов перечисленных
 	 * в config.json
 	 */
-	std::vector<std::string> GetTextDocuments() const;
+	[[nodiscard]] std::vector<std::string> GetTextDocuments() const;
 
 	/**
 	 * Метод считывает поле, "name", с названием поискового движка
 	 * @return
 	 */
-	std::string GetNameProgramm() const;
+	[[nodiscard]] std::string GetNameProgramm() const;
 
 	/**
 	 * Метод считывает поле, "version",  с номером версии поискового движка
 	 * @return
 	 */
-	std::string GetVersionFile() const;
+	[[nodiscard]] std::string GetVersionFile() const;
 
 	/**
 	 * Метод считывает поле max_responses для определения предельного
 	 * количества ответов на один запрос
 	 * @return
 	 */
-	int GetResponsesLimit() const;
+	[[nodiscard]] int GetResponsesLimit() const;
 
 	/**
 	 * Метод получения запросов из файла requests.json
 	 * @return возвращает список запросов из файла requests.json
 	 */
-	std::vector<std::string> GetRequests() const;
+	[[nodiscard]] std::vector<std::string> GetRequests() const;
 
 	/**
 	 * Положить в файл answers.json результаты поисковых запросов
@@ -100,7 +100,7 @@ private:
 
 struct ConfigFileMissing : public std::exception
 {
-	const char* what() const throw()
+	[[nodiscard]] const char* what() const throw()
 	{
 		return "Config file is missing";
 	}
@@ -108,7 +108,7 @@ struct ConfigFileMissing : public std::exception
 
 struct ConfigFileEmpty : public std::exception
 {
-	const char* what() const throw()
+	[[nodiscard]] const char* what() const throw()
 	{
 		return "Config file is empty";
 	}
@@ -116,7 +116,7 @@ struct ConfigFileEmpty : public std::exception
 
 struct IncorrectFileVersion : public std::exception
 {
-	const char* what() const throw()
+	[[nodiscard]] const char* what() const throw()
 	{
 		return "Incorrect file version";
 	}
