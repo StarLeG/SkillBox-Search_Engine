@@ -8,7 +8,6 @@ find_package(Boost 1.81.0 REQUIRED)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     link_directories(${Boost_LIBRARY_DIRS})
-
 endif()
 
 set(CMAKE_CXX_STANDARD 17)
@@ -17,21 +16,24 @@ set(MY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 set(CMAKE_PREFIX_PATH "..\\..\\..\\..\\..\\cmake")
 set(MY_SRC_DIR ${CMAKE_SOURCE_DIR}/source)
 
+include(FetchContent)
+
+FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG release-1.12.1
+)
+FetchContent_MakeAvailable(googletest)
+
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz)
+FetchContent_MakeAvailable(json)
+
 enable_testing()
 
 add_subdirectory(source)
-add_subdirectory(lib/nlohmann_json)
 add_subdirectory(tests)
-add_subdirectory(lib/googletest)
-
-
-
-
 
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
-
-
-
 
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/config.json           DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/source)

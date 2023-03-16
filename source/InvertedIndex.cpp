@@ -1,4 +1,4 @@
-#include "invertedIndex.h"
+#include "InvertedIndex.h"
 
 void InvertedIndex::UpdateDocumentBase(std::vector<std::string>& input_docs)
 {
