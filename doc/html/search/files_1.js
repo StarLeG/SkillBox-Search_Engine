@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['invertedindex_2eh_0',['invertedIndex.h',['../inverted_index_8h.html',1,'']]]
+  ['invertedindex_2eh_0',['InvertedIndex.h',['../_inverted_index_8h.html',1,'']]]
 ];

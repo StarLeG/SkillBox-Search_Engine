@@ -24,8 +24,8 @@
 */
 var NAVTREE =
 [
-  [ "My Project", "index.html", [
-    [ "SkillBox-Search_Engine", "md__d___skillbox__skill_box__c____search_engine__r_e_a_d_m_e.html", null ],
+  [ "Search Engine", "index.html", [
+    [ "SkillBox-Search_Engine", "md__d___skill_box__engine_search__r_e_a_d_m_e.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
