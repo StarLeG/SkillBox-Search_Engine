@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.24.2)
+cmake_minimum_required (VERSION 3.26.0)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
