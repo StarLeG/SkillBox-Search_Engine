@@ -32,3 +32,19 @@
 [GoogleTest](https://github.com/google/googletest)
 
 ## Описание файлов:
+
+## Класс ConverterJSON:
+
+```C++
+#include <ConverterJSON.h>
+```
+
+Класс для работы с JSON-файлами
+
+## Методы:
+```C++
+std::string ConverterJSON::GetNameProgramm()const
+```
+Метод считывает поле, "name", с названием поискового движка
+
+
