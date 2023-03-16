@@ -100,7 +100,7 @@ private:
 
 struct ConfigFileMissing : public std::exception
 {
-	[[nodiscard]] const char* what() const throw()
+	[[nodiscard]] const char* what() const noexcept override
 	{
 		return "Config file is missing";
 	}
@@ -108,7 +108,7 @@ struct ConfigFileMissing : public std::exception
 
 struct ConfigFileEmpty : public std::exception
 {
-	[[nodiscard]] const char* what() const throw()
+	[[nodiscard]] const char* what() const noexcept override
 	{
 		return "Config file is empty";
 	}
@@ -116,7 +116,7 @@ struct ConfigFileEmpty : public std::exception
 
 struct IncorrectFileVersion : public std::exception
 {
-	[[nodiscard]] const char* what() const throw()
+	[[nodiscard]] const char* what() const noexcept override
 	{
 		return "Incorrect file version";
 	}
