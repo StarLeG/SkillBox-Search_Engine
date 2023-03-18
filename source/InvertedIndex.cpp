@@ -4,6 +4,7 @@ void InvertedIndex::UpdateDocumentBase(std::vector<std::string>& input_docs)
 {
 	std::map<std::string, Entry> fileFreqDictionary;
 	size_t docId = 0;
+	std::vector<std::thread> threads;
 
 	if (input_docs.empty())
 	{
