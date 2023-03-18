@@ -7,6 +7,8 @@
 #include <cctype>
 #include <sstream>
 #include <algorithm>
+#include <thread>
+#include <mutex>
 
 #include "ConverterJSON.h"
 
