@@ -7,8 +7,9 @@
 #include <exception>
 #include "version.h"
 
+
 #include <nlohmann/json.hpp>
-#include <boost/thread.hpp>
+
 
 /**
  * Структура для хранения параметров из файла config.json

@@ -58,7 +58,7 @@ ConverterJSON::ConverterJSON()
 ```C++
 std::string ConverterJSON::GetNameProgramm()const
 ```
-Метод считывает поле, "name", с конфигурационного файла
+Метод считывает поле, "`name"`, с конфигурационного файла
 
 **Возвращает**
 строку с названием поискового движка
@@ -66,19 +66,19 @@ std::string ConverterJSON::GetNameProgramm()const
 ### GetRequests()
 
 ```C++
-std::vector< std::string > ConverterJSON::GetRequests() const
+std::vector<std::string> ConverterJSON::GetRequests() const
 ```
-Метод получения запросов из файла requests.json
+Метод получения запросов из файла `requests.json`
 
 **Возвращает**
-возвращает список запросов из файла requests.json
+возвращает список запросов из файла `requests.json`
 
 ### GetResponsesLimit()
 
 ```C++
 int ConverterJSON::GetResponsesLimit() const
 ```
-Метод считывает поле max_responses из конфигурационного файла
+Метод считывает поле `max_responses` из конфигурационного файла
 
 **Возвращает**
 количества ответов на один запрос
@@ -86,7 +86,7 @@ int ConverterJSON::GetResponsesLimit() const
 ### GetTextDocuments()
 
 ```C++
-std::vector< std::string > ConverterJSON::GetTextDocuments() const
+std::vector<std::string> ConverterJSON::GetTextDocuments() const
 ```
 Метод получения содержимого файлов
 
@@ -99,7 +99,7 @@ std::vector< std::string > ConverterJSON::GetTextDocuments() const
 std::string ConverterJSON::GetVersionFile()	const
 ```
 
-Метод считывает поле, "version", с конфигурационного файла
+Метод считывает поле, "`version`", с конфигурационного файла
 
 **Возвращает**
 строку с номером версии поискового движка
@@ -107,7 +107,7 @@ std::string ConverterJSON::GetVersionFile()	const
 ###  PutAnswers()
 
 ```c++
-static void ConverterJSON::PutAnswers(const std::vector< std::vector< std::pair<int, float>>> &answers)	
+static void ConverterJSON::PutAnswers(const std::vector<std::vector<std::pair<int, float>>> &answers)	
 ```
 
 Положить в файл answers.json результаты поисковых запросов
@@ -124,7 +124,7 @@ static void ConverterJSON::PutAnswers(const std::vector< std::vector< std::pair<
 ### InvertedIndex()
 
 ```c++
-nvertedIndex::InvertedIndex	()	
+nvertedIndex::InvertedIndex()	
 ```
 
 ## **Методы:**
@@ -132,20 +132,21 @@ nvertedIndex::InvertedIndex	()
 ### GetWordCount()
 
 ```c++
-std::vector< Entry > InvertedIndex::GetWordCount(const std::string &word)	
+std::vector<Entry> InvertedIndex::GetWordCount(const std::string &word)	
 ```
 
 Метод определяет количество вхождений слова `word` в загруженной базе документов
 
 **Аргументы**
 `word`	слово, частоту вхождений которого необходимо определить
+
 **Возвращает**
 возвращает подготовленный список с частотой слов
 
 ### UpdateDocumentBase()
 
 ```c++
-void InvertedIndex::UpdateDocumentBase(std::vector< std::string> &input_docs)	
+void InvertedIndex::UpdateDocumentBase(std::vector<std::string> &input_docs)	
 ```
 
 Обновить или заполнить базу документов, по которой будем совершать поиск
