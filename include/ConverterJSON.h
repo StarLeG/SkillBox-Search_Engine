@@ -50,21 +50,20 @@ public:
 	[[nodiscard]] std::vector<std::string> GetTextDocuments() const;
 
 	/**
-	 * Метод считывает поле, "name", с названием поискового движка
-	 * @return
+	 * Метод считывает поле, "name", с конфигурационного файла
+	 * @return строку с названием поискового движка
 	 */
 	[[nodiscard]] std::string GetNameProgramm() const;
 
 	/**
-	 * Метод считывает поле, "version",  с номером версии поискового движка
-	 * @return
+	 * Метод считывает поле, "version",  с конфигурационного файла
+	 * @return строку с номером версии поискового движка
 	 */
 	[[nodiscard]] std::string GetVersionFile() const;
 
 	/**
-	 * Метод считывает поле max_responses для определения предельного
-	 * количества ответов на один запрос
-	 * @return
+	 * Метод считывает поле max_responses  из конфигурационного файла
+	 * @return количества ответов на один запрос
 	 */
 	[[nodiscard]] int GetResponsesLimit() const;
 
