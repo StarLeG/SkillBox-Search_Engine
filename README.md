@@ -33,6 +33,73 @@
 
 [Mingw-w64](https://www.mingw-w64.org/)
 
+
+
+## Сборка  и запуск проекта
+
+1. [Скачиваем архив с проектом на Ваш ПК](https://github.com/StarLeG/SkillBox-Search_Engine/archive/refs/heads/master.zip)
+или клонированируем репозиторий коммандой:
+```
+git clone https://github.com/StarLeG/SkillBox-Search_Engine.git
+```
+2. В папке с проектом из под командной строки создаем папку `build` командой: 
+```
+mkdir build && cd build
+```
+3. Собираем проект
+```
+cmake .. && cmake --build . --config Release --target SearchEngine
+```
+В результате файл проекта будет помещен в папку Release в корневом каталоге. Тестовый файл будет помещен в тесты.
+4. Копируем файлы `requests.json`, `config.json` и `resources` в папку  `Release` 
+### пример файла config.json
+```json
+{
+  "config": {
+    "name": "Skillbox-Search_Engine",
+    "version": "0.1",
+    "max_responses": 5
+  },
+  "files": [
+    "resources/file001.txt",
+    "resources/file002.txt",
+    "resources/file003.txt",
+    "resources/file004.txt"
+  ]
+}
+```
+ config - настройки проекта
+
+ name - поле, с названием поискового движка.
+
+ version - поле, с номером версии поискового движка.
+
+max_responses - поле, определяющее максимальное количество ответов на один запрос.
+
+files - содержит пути к файлам для поиска. Внутри списка файлов указаны пути к файлам.
+
+### пример файла requests.json
+```json
+{
+    "requests": [
+      "electronic",
+      "book",
+      "University",
+      "pollution",
+      "actor",
+      "reading",
+      "pollution"
+    ]
+  }
+```
+
+5. Запуск проекта
+```
+.\Release\SearchEngine
+```
+
+После запуска проекта, результатом работы приложения будет файл «`nswers.json`», содержащий список найденных слов и их реливантность.
+
 ## Описание файлов:
 
 ## Класс ConverterJSON:
