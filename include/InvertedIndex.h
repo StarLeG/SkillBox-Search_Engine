@@ -7,11 +7,10 @@
 #include <cctype>
 #include <sstream>
 #include <algorithm>
-#include <thread>
-#include <mutex>
+
 
 #include "ConverterJSON.h"
-
+#include <boost/thread.hpp>
 
 struct Entry
 {
@@ -50,5 +49,12 @@ private:
 	std::vector<std::string> docs;                             // список содержимого документов
 	std::map<std::string, std::vector<Entry>> freq_dictionary; // частотный словарь
 	Entry entry{};
+
+	/**
+	* Метод для перевода из строчных букв в прописные
+	* @param
+	* input_text строка с исходным текстом
+	*/
+	void transform_to_lower(std::string& input_text);
 
 };

@@ -1,10 +1,11 @@
 #include "InvertedIndex.h"
 
+
 void InvertedIndex::UpdateDocumentBase(std::vector<std::string>& input_docs)
 {
 	std::map<std::string, Entry> fileFreqDictionary;
 	size_t docId = 0;
-	std::vector<std::thread> threads;
+
 
 	if (input_docs.empty())
 	{
@@ -12,18 +13,14 @@ void InvertedIndex::UpdateDocumentBase(std::vector<std::string>& input_docs)
 		return;
 	}
 
-	for (auto& it: input_docs)
+	for (auto& text: input_docs)
 	{
 
-		std::transform(it.begin(), it.end(), it.begin(), [](char const& c)
-		{
-			return std::tolower(c);
-		});
-		docs.emplace_back(it);
+
 	}
 
-	freq_dictionary.clear();
 
+	freq_dictionary.clear();
 
 	for (auto& str: docs)
 	{
@@ -74,3 +71,21 @@ std::vector<Entry> InvertedIndex::GetWordCount(const std::string& word)
 	}
 
 }
+
+
+void InvertedIndex::transform_to_lower(std::string& input_text)
+{
+	std::transform(input_text.begin(), input_text.end(), input_text.begin(), [](char const& c)
+	{
+		return std::tolower(c);
+	});
+	InvertedIndex::docs.emplace_back(input_text);
+}
+
+
+
+
+
+
+
+
