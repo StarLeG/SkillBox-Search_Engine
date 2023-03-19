@@ -7,10 +7,11 @@
 #include <cctype>
 #include <sstream>
 #include <algorithm>
+#include <thread>
 
 
 #include "ConverterJSON.h"
-#include <boost/thread.hpp>
+
 
 struct Entry
 {
