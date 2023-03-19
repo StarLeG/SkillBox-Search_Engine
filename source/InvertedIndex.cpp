@@ -1,5 +1,15 @@
 #include "InvertedIndex.h"
 
+void InvertedIndex::transform_to_lower( std::string input_text)
+{
+	
+	std::transform(input_text.begin(), input_text.end(), input_text.begin(), [](char const& c)
+	{
+		return std::tolower(c);
+	});
+	InvertedIndex::docs.emplace_back(input_text);
+}
+
 
 void InvertedIndex::UpdateDocumentBase(std::vector<std::string>& input_docs)
 {
@@ -8,17 +18,22 @@ void InvertedIndex::UpdateDocumentBase(std::vector<std::string>& input_docs)
 	std::vector<std::thread> threads;
 
 
+
 	if (input_docs.empty())
 	{
 		std::cerr << "Warring!!! Indexing: no content in docs content base." << std::endl;
 		return;
 	}
 
-	for (auto& text: input_docs)
+	for(auto& txt : input_docs)
 	{
-		//threads.emplace_back(&InvertedIndex::transform_to_lower,this,text);
+		threads.emplace_back(&InvertedIndex::transform_to_lower,this,txt);
 	}
 
+	for(auto& it : threads)
+	{
+		it.join();
+	}
 
 	freq_dictionary.clear();
 
@@ -73,14 +88,9 @@ std::vector<Entry> InvertedIndex::GetWordCount(const std::string& word)
 }
 
 
-void InvertedIndex::transform_to_lower(std::string& input_text)
-{
-	std::transform(input_text.begin(), input_text.end(), input_text.begin(), [](char const& c)
-	{
-		return std::tolower(c);
-	});
-	InvertedIndex::docs.emplace_back(input_text);
-}
+
+
+
 
 
 
