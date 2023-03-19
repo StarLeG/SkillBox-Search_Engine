@@ -16,7 +16,7 @@ void InvertedIndex::UpdateDocumentBase(std::vector<std::string>& input_docs)
 
 	for (auto& text: input_docs)
 	{
-		threads.emplace_back(&InvertedIndex::transform_to_lower,this,text);
+		//threads.emplace_back(&InvertedIndex::transform_to_lower,this,text);
 	}
 
 
