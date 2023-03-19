@@ -1,9 +1,16 @@
 cmake_minimum_required(VERSION 3.26.0)
 project(EngineSearch VERSION 0.0.1)
 
+set(Boost_INCLUDE_DIRS "boost_1_81_0")
+set(Boost_LIBRARY_DIRS "boost_1_81_0\\stage\\lib")
 
+find_package(Boost 1.81.0 REQUIRED)
+if(Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+    link_directories(${Boost_LIBRARY_DIRS})
+endif()
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(MY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 
 set(CMAKE_PREFIX_PATH "..\\..\\..\\..\\..\\cmake")
@@ -20,6 +27,9 @@ FetchContent_MakeAvailable(googletest)
 
 FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz)
 FetchContent_MakeAvailable(json)
+
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 enable_testing()
 
