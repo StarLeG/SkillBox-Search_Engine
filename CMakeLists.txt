@@ -1,16 +1,11 @@
 cmake_minimum_required(VERSION 3.26.0)
 project(EngineSearch VERSION 0.0.1)
 
-set(Boost_INCLUDE_DIRS "boost_1_81_0")
-set(Boost_LIBRARY_DIRS "boost_1_81_0\\stage\\lib")
 
-find_package(Boost 1.81.0 REQUIRED)
-if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
-    link_directories(${Boost_LIBRARY_DIRS})
-endif()
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
 set(MY_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 
 set(CMAKE_PREFIX_PATH "..\\..\\..\\..\\..\\cmake")

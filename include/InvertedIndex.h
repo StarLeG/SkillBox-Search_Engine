@@ -9,22 +9,19 @@
 #include <algorithm>
 #include <thread>
 
-
 #include "ConverterJSON.h"
-
 
 struct Entry
 {
 	size_t doc_id, count;
 
 	// Данный оператор необходим для проведения тестовых сценариев
-	bool operator==(const Entry& other) const
+	bool operator==(const Entry &other) const
 	{
 		return (doc_id == other.doc_id &&
 				count == other.count);
 	}
 };
-
 
 class InvertedIndex
 {
@@ -36,7 +33,7 @@ public:
 	поиск
 	* @param texts_input содержимое документов
 	*/
-	void UpdateDocumentBase(std::vector<std::string>& input_docs);
+	void UpdateDocumentBase(std::vector<std::string> &input_docs);
 
 	/**
 	* Метод определяет количество вхождений слова word в загруженной базе
@@ -44,18 +41,17 @@ public:
 	* @param word слово, частоту вхождений которого необходимо определить
 	* @return возвращает подготовленный список с частотой слов
 	*/
-	std::vector<Entry> GetWordCount(const std::string& word);
+	std::vector<Entry> GetWordCount(const std::string &word);
 
 private:
-	std::vector<std::string> docs;                             // список содержимого документов
+	std::vector<std::string> docs;							   // список содержимого документов
 	std::map<std::string, std::vector<Entry>> freq_dictionary; // частотный словарь
 	Entry entry{};
-
+	
 	/**
-	* Метод для перевода из строчных букв в прописные
-	* @param
-	* input_text строка с исходным текстом
-	*/
-	void transform_to_lower(std::string& input_text);
-
+	 * Метод для перевода из строчных букв в прописные
+	 * @param
+	 * input_text строка с исходным текстом
+	 */
+	void transform_to_lower(std::string input_text);
 };
