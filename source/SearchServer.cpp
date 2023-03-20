@@ -16,7 +16,7 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(const std::vector<s
 		}
 
 		int indexWordStart = 0;
-		int indexWordEnd = 0;
+		int indexWordEnd;
 
 		while (request[i] != '\0')
 		{
