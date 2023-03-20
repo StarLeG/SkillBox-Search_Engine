@@ -54,4 +54,11 @@ private:
 	 * input_text строка с исходным текстом
 	 */
 	void transform_to_lower(std::string input_text);
+
+	/**
+	 * Метод для заполнения  частотного словаря
+	 * @param
+	 * docs список содержимого документов
+	 */
+	void update_freq_dictionary(const std::vector<std::string>& docs);
 };
