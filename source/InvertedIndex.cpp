@@ -1,10 +1,13 @@
 #include "InvertedIndex.h"
 
+std::mutex InvertedIndex::mutexTransform_to_lower;
+
 void InvertedIndex::UpdateDocumentBase(std::vector<std::string>& input_docs)
 {
 	std::map<std::string, Entry> fileFreqDictionary;
 	size_t docId = 0;
 	std::vector<std::thread> threads;
+
 	//unsigned int n = std::thread::hardware_concurrency();
 
 
@@ -80,12 +83,13 @@ std::vector<Entry> InvertedIndex::GetWordCount(const std::string& word)
 
 void InvertedIndex::transform_to_lower( std::string input_text)
 {
-
+	InvertedIndex::mutexTransform_to_lower.lock();
 	std::transform(input_text.begin(), input_text.end(), input_text.begin(), [](char const& c)
 	{
 		return std::tolower(c);
 	});
 	InvertedIndex::docs.emplace_back(input_text);
+	InvertedIndex::mutexTransform_to_lower.unlock();
 }
 
 void InvertedIndex::update_freq_dictionary(const std::vector<std::string>& docs)

@@ -8,6 +8,7 @@
 #include <sstream>
 #include <algorithm>
 #include <thread>
+#include <mutex>
 
 #include "ConverterJSON.h"
 
@@ -47,6 +48,7 @@ private:
 	std::vector<std::string> docs;							   // список содержимого документов
 	std::map<std::string, std::vector<Entry>> freq_dictionary; // частотный словарь
 	Entry entry{};
+	static std::mutex mutexTransform_to_lower;
 	
 	/**
 	 * Метод для перевода из строчных букв в прописные
