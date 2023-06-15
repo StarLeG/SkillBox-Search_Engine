@@ -86,7 +86,7 @@ private:
 	RequestsJson requestsJson;
 
 	/**
-	 * Метод получения запросов из файла requests.json
+	 * Метод получения запросов из файла config.json
 	 * @return
 	 */
 	bool readConfigFile();
